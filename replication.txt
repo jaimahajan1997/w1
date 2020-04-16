@@ -1,1 +1,13 @@
-
+1. mongod --port 27000 --dbpath "C:\data" --replSet rs0
+2. rs.add("mongod1.net:27000")
+3. docker images
+4. docker pull mongo 
+5. docker network create cluster_main
+6. docker run -d --net cluster_main --name a mongo mongod --replSet rep --port 27000
+7. docker run -d --net cluster_main --name b mongo mongod --replSet rep --port 27001
+8. docker run -d --net cluster_main --name c mongo mongod --replSet rep --port 27002
+9. docker run -it a mongo
+10. config={"_id":"rep","members":[{"_id":0,"host":"mongo1:27000","hidden" : false},{"_id":1,"host":"mongo2:27001","hidden" : false},{"_id":2,"host":"mongo3:27002",priority=0,"hidden" : true,"slaveDelay"=3600}]}
+11. rs.initiate(config)
+12. db.getMongo().setSlaveOk(true)
+13. Node a is primary and b is created replica(immediately) and c is read only and created after 1 hr.
