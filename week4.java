@@ -25,15 +25,16 @@ if(map.containsKey(word)) {
 	System.out.println(map.get(word));
 }
 else {
-System.out.println("Not found.....Enter Synonyms");
+System.out.println("Not found.....if you want to add it enter Y... Then Enter Synonyms");
 List<String> arr3 = new ArrayList<String>();
+if(sc.next.equals("Y"){
 String a=word;
 while (!a.equals(" ")) {
 	//System.out.println(a);
 	a=sc.nextLine();
 	arr3.add(a);
 }
-map.put(word, arr3);
+map.put(word, arr3);} 
 System.out.println(map);}
 	}
 
